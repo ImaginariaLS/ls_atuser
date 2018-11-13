@@ -6,15 +6,27 @@
  */
 class PluginAtuser_HookAtuser extends Hook
 {
+    const ConfigKey = 'atuser';
+    const HooksArray = [
+        'comment_add_before'    =>  'correctComment',
+        'topic_add_before'      =>  'correctTopic',
+        'topic_edit_before'     =>  'correctTopic'
+    ];
 
     /**
      * Регистрация событий на хуки
      */
     public function RegisterHook()
     {
-        $this->AddHook('comment_add_before', 'correctComment', __CLASS__);
-        $this->AddHook('topic_add_before', 'correctTopic', __CLASS__);
-        $this->AddHook('topic_edit_before', 'correctTopic', __CLASS__);
+        $plugin_config_key = $this::ConfigKey;
+        foreach ($this::HooksArray as $hook => $callback) {
+            $this->AddHook(
+                $hook,
+                $callback,
+                __CLASS__,
+                Config::Get("plugin.{$plugin_config_key}.hook_priority.{$hook}") ?? 1
+            );
+        }
     }
 
     /**
