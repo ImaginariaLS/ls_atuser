@@ -1,5 +1,7 @@
-﻿Пользователь <a href="{$oSender->getUserWebPath()}">{$oSender->getLogin()}</a> упомянул вас в
-комменарии к топику: "<a href="{$oTopic->getUrl()}"><strong>{$oTopic->getTitle()}</strong></a>".
-Не забудьте предварительно авторизоваться!
-<br/><br/>
-С уважением, администрация сайта <a href="{cfg name='path.root.web'}">{cfg name='view.name'}</a>
+﻿<h2>{cfg name='view.name'}</h2>
+<h4>{cfg name='view.description'}</h4>
+<hr>
+
+Пользователь <a href="{$oSender->getUserWebPath()}">{$oSender->getLogin()}</a> упомянул вас в
+комментарии к дискуссии: «<a href="{$oTopic->getUrl()}"><strong>{$oTopic->getTitle()}</strong></a>».
+
