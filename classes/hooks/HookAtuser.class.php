@@ -84,7 +84,6 @@ class PluginAtuser_HookAtuser extends Hook
         }
         $sRes = $sText;
         foreach ($repls as $repl) {
-            // $sRes = str_replace($repl['repl'], '<a href="' . $repl['ref'] . '" class="ls-user">' . $repl['login'] . '</a>', $sRes);
             $sRes = str_replace($repl['repl'], "<a href=\"{$repl['ref']}\" class=\"ls-user\">{$repl['login']}</a>", $sRes);
         }
         return $sRes;
